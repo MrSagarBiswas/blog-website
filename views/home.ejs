@@ -6,17 +6,17 @@
 
 <!-- blogs -->
 <div class="row mb-2">
-<% posts.forEach( (post) => { %>
+<% for(var i=posts.length - 1; i>=0; i-- ) { %>
     <% var postBody = ""; %>
-    <% if ( post.postBody.length > 100 ) {postBody = post.postBody.slice(0, 100) + "..."} else {postBody = post.postBody} %>
+    <% if ( posts[i].postBody.length > 100 ) {postBody = posts[i].postBody.slice(0, 100) + "..."} else {postBody = posts[i].postBody} %>
     <div class="col-md-4">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative padding">
-            <h3 class="mb-0"> <%= post.postTitle %> </h3>
+            <h3 class="mb-0"> <%= posts[i].postTitle %> </h3>
             <p class="card-text mb-auto"> <%= postBody %> </p>
-            <a class="stretched-link" href="/post/<%= post.postTitle %>">Continue reading</a>
+            <a class="stretched-link" href="/post/<%= posts[i].postTitle %>">Continue reading</a>
         </div>
     </div>
-    <% }); %>
+    <% } %>
 </div>
 
 
