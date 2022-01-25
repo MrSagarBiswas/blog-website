@@ -1,16 +1,23 @@
 <%- include("partials/header"); -%>
 <h1>Home</h1>
+<div class="max-width">
 <p><%= homeContent %></p>
+</div>
 
 <!-- blogs -->
-
+<div class="row mb-2">
 <% posts.forEach( (post) => { %>
     <% var postBody = ""; %>
-    <% if ( post.postBody.length > 100 ) {postBody = post.postBody.slice(0, 100) + " ..."} else {postBody = post.postBody} %>
-    <h3> <%= post.postTitle %> </h3>
-    <p> <%= postBody %> <a href="/post/<%= post.postTitle %>">Read More</a> </p>
-<% }); %>
-
+    <% if ( post.postBody.length > 100 ) {postBody = post.postBody.slice(0, 100) + "..."} else {postBody = post.postBody} %>
+    <div class="col-md-4">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative padding">
+            <h3 class="mb-0"> <%= post.postTitle %> </h3>
+            <p class="card-text mb-auto"> <%= postBody %> </p>
+            <a class="stretched-link" href="/post/<%= post.postTitle %>">Continue reading</a>
+        </div>
+    </div>
+    <% }); %>
+</div>
 
 
 

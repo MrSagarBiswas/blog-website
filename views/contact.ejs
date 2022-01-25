@@ -1,6 +1,41 @@
 <%- include("partials/header"); -%>
 
 <h1>Contact</h1>
-<p> <%= contactContent %> </p>
+
+<div class="max-width">
+    <div>
+        <table style="text-align: left;" cellspacing="10">
+            <tr>
+                <th>Name:</th>
+                <td><em>Sagar Biswas</em></td>
+            </tr>
+            <tr>
+                <th>Contact: </th>
+                <td><em> +9189679979XX</em></td>
+            </tr>
+            <tr>
+                <th>Mail: </th>
+                <td><em> biswassagar9XX@gmail.com</em></td>
+            </tr>
+            <tr>
+                <th>Address: </th>
+                <td>
+                    Kolkata, West Bengal, India.
+                </td>
+            </tr>
+        </table>
+    </div><br><br>
+    <div>
+        <form action="mailto:biswassagar927@gmail.com" method="POST" enctype="text/plain">
+            <label for="Name">Your Name</label><br>
+            <input type="text" name="Name" id="Name" placeholder="Enter Name"><br>
+            <label for="Email">Mail ID</label><br>
+            <input type="email" name="Email" id="Email" placeholder="Email"><br>
+            <label for="message">Message</label><br>
+            <textarea name="message" name="Message" id="message" style="height: 100px;" placeholder="Message"></textarea><br>
+            <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+    </div>
+</div>
 
 <%- include("partials/footer"); -%>

@@ -3,13 +3,27 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 
-const homeStartingContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus tempore placeat nostrum quaerat vero repellendus veniam perferendis! Pariatur culpa commodi harum aspernatur iusto quo accusantium suscipit voluptas unde fugiat molestias at, quam sapiente, ipsa nemo fugit ipsum minus exercitationem omnis voluptates provident repellat velit rerum? Reiciendis adipisci porro odio in! Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci.";
-
-const aboutContent = "At id, nisi dolorum dicta maiores repellendus. Labore provident voluptates omnis, eum, earum harum repudiandae reiciendis, delectus facere dolores similique hic sequi totam? Quis asperiores maiores consectetur veritatis soluta nostrum placeat explicabo perferendis pariatur suscipit, modi debitis saepe laboriosam itaque eius! Ab accusamus laborum exercitationem consequatur aut ut velit illum. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut.";
+const homeStartingContent = "This is just a Demo Blog Page Created by MrSagarBiswas. Anyone can Post here any Blog Anonymously. Node.js, Express, EJS Templating Back-End tools used to create this Project.";
 
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Quisquam velit quos sequi error, minima dolor unde inventore assumenda. Voluptatum fugiat saepe doloribus aperiam odit labore dolorem accusamus veniam vitae molestias repellendus ullam pariatur, vero explicabo tempore inventore esse, quaerat nesciunt commodi fuga dicta minima? Unde pariatur, ab hic, fugit quidem iure quaerat natus quisquam illo, repellat aperiam quae fuga. Placeat repellat quam, hic fugit commodi magni doloribus.";
 
-const posts = [];
+const posts = [{
+    postTitle: "How to Create a Blog?",
+    postBody: "To Create a Blog just go to Compose section from navbar. Then Write your Blog Title and Blog Body. Then Click on Publish. You will be redirected to Home Page where Your Blog would be published. Thank You. -By MrSagarBiswas"
+},
+{
+    postTitle: "What is Web Development!",
+    postBody: 'Web development is the work involved in developing a website for the Internet (World Wide Web) or an intranet (a private network). Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services. A more comprehensive list of tasks to which Web development commonly refers, may include Web engineering, Web design, Web content development, client liaison, client-side/server-side scripting, Web server and network security configuration, and e-commerce development.     Among Web professionals, "Web development" usually refers to the main non-design aspects of building Web sites: writing markup and coding. Web development may use content management systems (CMS) to make content changes easier and available with basic technical skills.     For larger organizations and businesses, Web development teams can consist of hundreds of people (Web developers) and follow standard methods like Agile methodologies while developing Web sites. Smaller organizations may only require a single permanent or contracting developer, or secondary assignment to related job positions such as a graphic designer or information systems technician. Web development may be a collaborative effort between departments rather than the domain of a designated department. There are three kinds of Web developer specialization: front-end developer, back-end developer, and full-stack developer. Front-end developers are responsible for behavior and visuals that run in the user browser, while back-end developers deal with the servers.'
+},
+{
+    postTitle: "Data science",
+    postBody: 'Data science is an interdisciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from noisy, structured and unstructured data, and apply knowledge and actionable insights from data across a broad range of application domains. Data science is related to data mining, machine learning and big data. Data science is a "concept to unify statistics, data analysis, informatics, and their related methods" in order to "understand and analyze actual phenomena" with data. It uses techniques and theories drawn from many fields within the context of mathematics, statistics, computer science, information science, and domain knowledge. However, data science is different from computer science and information science. Turing Award winner Jim Gray imagined data science as a "fourth paradigm" of science (empirical, theoretical, computational, and now data-driven) and asserted that "everything about science is changing because of the impact of information technology" and the data deluge. A data scientist is someone who creates programming code, and combines it with statistical knowledge to create insights from data.'
+},
+{
+    postTitle: "What is Blog?",
+    postBody: "A blog is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries. Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page."
+}
+];
 
 const app = express();
 
@@ -27,7 +41,7 @@ app.get("/", (req, res) => {
 // Response to About Route
 
 app.get("/about", (req, res) => {
-    res.render("about", { aboutContent: aboutContent });
+    res.render("about");
 });
 
 // Response to Contact Route
@@ -55,12 +69,16 @@ app.post("/compose", (req, res) => {
 // Individual Link for Each Post
 
 app.get("/post/:postid", (req, res) => {
+    let flag = 0;
     posts.forEach(post => {
         if (_.lowerCase(post.postTitle) == _.lowerCase(req.params.postid)) {
             res.render("post", { postTitle: post.postTitle, postBody: post.postBody })
+            flag = 1;
         }
     });
-    //res.render("page404")
+    if (flag === 0) {
+        res.render("page404");
+    }
 });
 
 // Listen to Port 

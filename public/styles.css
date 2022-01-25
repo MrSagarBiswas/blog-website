@@ -8,13 +8,20 @@
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 5px;
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
 }
 
+.max-width {
+  max-width: 900px;
+}
+
+.padding {
+  padding: 10px;
+}
 /* Input Text Box  */
 
 input,
@@ -50,16 +57,12 @@ form p {
   width: 100%;
   line-height: 0.8rem;
   color: rgb(0, 0, 0);
-  background: linear-gradient(to right, rgb(0, 255, 76), rgb(0, 225, 255));
+  background: #f8f9fa;
   text-shadow: 5px 5px 15px rgb(0, 0, 0, 0.3);
-  font-size: 1.5rem;
+  font-size: 16px;
 }
 
 #footer .fab {
   margin: 10px 10px;
-  font-size: 3rem;
-}
-
-#footer a {
-  text-decoration: none;
+  font-size: 2rem;
 }
