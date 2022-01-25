@@ -1,0 +1,65 @@
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
+
+/* Input Text Box  */
+
+input,
+textarea {
+  width: 50%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(34, 34, 34, 0.1);
+  margin-bottom: 15px;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  input,
+  textarea {
+    width: 100%;
+  }
+}
+
+form p {
+  margin: 0;
+}
+
+/* Footer */
+
+.wrapper {
+  min-height: 77.5vh;
+}
+
+#footer {
+  padding-bottom: 0.1%;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  line-height: 0.8rem;
+  color: rgb(0, 0, 0);
+  background: linear-gradient(to right, rgb(0, 255, 76), rgb(0, 225, 255));
+  text-shadow: 5px 5px 15px rgb(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+}
+
+#footer .fab {
+  margin: 10px 10px;
+  font-size: 3rem;
+}
+
+#footer a {
+  text-decoration: none;
+}

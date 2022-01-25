@@ -1,0 +1,17 @@
+<%- include("partials/header"); -%>
+<h1>Home</h1>
+<p><%= homeContent %></p>
+
+<!-- blogs -->
+
+<% posts.forEach( (post) => { %>
+    <% var postBody = ""; %>
+    <% if ( post.postBody.length > 100 ) {postBody = post.postBody.slice(0, 100) + " ..."} else {postBody = post.postBody} %>
+    <h3> <%= post.postTitle %> </h3>
+    <p> <%= postBody %> <a href="/post/<%= post.postTitle %>">Read More</a> </p>
+<% }); %>
+
+
+
+
+<%- include("partials/footer"); -%>
